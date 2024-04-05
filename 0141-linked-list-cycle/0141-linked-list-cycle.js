@@ -10,15 +10,11 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
-    if (!head) {
-        return false;
-    }
-    
+const hasCycle = function(head) {  
     const nodeMap = new Map();
     let node = head;
 
-    while (node.next !== null) {
+    while (node && node.next !== null) {
         nodeMap.set(node, true);
 
         if (nodeMap.get(node.next)) {
