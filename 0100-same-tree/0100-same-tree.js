@@ -14,7 +14,7 @@
 const isSameTree = function(p, q) {
     function checkSame(p, q) {
         if (!p && !q) {
-            return;
+            return true;
         }
 
         if ((!p && q) || (p && !q)) {
@@ -24,10 +24,9 @@ const isSameTree = function(p, q) {
         if (p.val !== q.val) {
             return false;
         }
-
-        if (checkSame(p.left, q.left) === false) return false;
-        if (checkSame(p.right, q.right) === false) return false;
+   
+        return (checkSame(p.left, q.left) && checkSame(p.right, q.right));
     }
 
-    return checkSame(p, q) === false ? false : true;
+    return checkSame(p, q);
 };
