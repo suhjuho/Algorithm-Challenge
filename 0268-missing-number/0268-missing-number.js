@@ -14,13 +14,9 @@ const missingNumber = function(nums) {
         existNumber[num] = true;
     });
 
-    let result;
-
-    Object.entries(existNumber).forEach((el) => {
-        if(!el[1]) {
-            result = el[0];
+    for (const number of Object.entries(existNumber)) {
+        if(!number[1]) {
+            return number[0];
         }
-    });
-
-    return result;
+    }
 };
