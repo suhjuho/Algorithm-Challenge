@@ -21,8 +21,8 @@ const isPalindrome = function(head) {
 
     const len = nodes.length;
 
-    for (let index = 0; index <= Math.floor(nodes.length); index += 1) {
-        if (nodes[index] !== nodes[nodes.length -1 -index]) {
+    for (let index = 0; index <= Math.floor(len); index += 1) {
+        if (nodes[index] !== nodes[len - 1 - index]) {
             return false;
         }
     }
