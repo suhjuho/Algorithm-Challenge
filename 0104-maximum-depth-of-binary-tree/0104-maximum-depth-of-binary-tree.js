@@ -11,11 +11,11 @@
  * @return {number}
  */
 const maxDepth = function(root) {
-    if (!root) {
-        return 0;
-    }
-
     let result = 0;
+    
+    if (!root) {
+        return result;
+    }
 
     function checkDepth(node, depth) {
         if (node) {
