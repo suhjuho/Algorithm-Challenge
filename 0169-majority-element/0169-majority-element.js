@@ -2,21 +2,20 @@
  * @param {number[]} nums
  * @return {number}
  */
-var majorityElement = function(nums) {
-    const limit = Math.floor(nums.length / 2);
-    const counts = {};
+const majorityElement = function(nums) {
+    let count = 0;
+    let element;
 
     nums.forEach((num) => {
-        if (counts[num]) {
-            counts[num] += 1;
+        if (count === 0) {
+            element = num;
+            count += 1;
+        } else if (element === num) {
+            count += 1;
         } else {
-            counts[num] = 1;
+            count -= 1;
         }
-    });
+    });    
 
-    for (const count in counts) {
-        if (counts[count] > limit) {
-            return count;
-        }
-    }
+    return element;
 };
