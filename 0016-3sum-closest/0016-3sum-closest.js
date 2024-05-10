@@ -4,14 +4,14 @@
  * @return {number}
  */
 const threeSumClosest = function(nums, target) {
-    const numbers = nums.slice().sort((a, b) => a - b);
-    let result = numbers[0] + numbers[1] + numbers[2];
+    nums.sort((a, b) => a - b);
+    let result = nums[0] + nums[1] + nums[2];
 
-    for (let i = 0; i < numbers.length - 2; i += 1) {
-        let [left, right] = [i + 1, numbers.length - 1];
+    for (let i = 0; i < nums.length - 2; i += 1) {
+        let [left, right] = [i + 1, nums.length - 1];
         
         while(left < right) {
-            const sum = numbers[i] + numbers[left] + numbers[right];
+            const sum = nums[i] + nums[left] + nums[right];
 
             if (sum === target) {
                 return sum; 
