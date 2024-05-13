@@ -25,7 +25,7 @@ const rotate = function(nums, k) {
         nums[newIndex] = currentValue;  
         currentIndex = newIndex;
         currentValue = nextValue;
-        count += 1;
         visited[newIndex] = true;
+        count += 1;
     }
 };
