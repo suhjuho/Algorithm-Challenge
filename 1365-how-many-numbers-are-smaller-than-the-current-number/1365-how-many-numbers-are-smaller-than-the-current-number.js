@@ -4,7 +4,7 @@
  */
 const smallerNumbersThanCurrent = function(nums) {
     const sortedNums = nums.slice().sort((a, b) => b - a);
-    const len = nums.length;
+    const len = sortedNums.length;
     const smallerCount = {};
     const result = [];
 
