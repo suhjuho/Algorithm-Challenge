@@ -4,12 +4,11 @@
  */
 const smallerNumbersThanCurrent = function(nums) {
     const sortedNums = nums.slice().sort((a, b) => b - a);
-    const len = sortedNums.length;
     const smallerCount = {};
     const result = [];
 
     sortedNums.forEach((num, index) => {
-        smallerCount[num] = len - index - 1;
+        smallerCount[num] = nums.length - index - 1;
     });
 
     nums.forEach((num) => {
