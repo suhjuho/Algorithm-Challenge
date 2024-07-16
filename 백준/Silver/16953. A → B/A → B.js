@@ -8,19 +8,24 @@ function solution(inputArguments) {
   const [start, goal] = inputArguments[0].split(" ").map(Number);
   const queue = [[start, 1]];
 
+  if (start === goal) return 1;
+
   while (queue.length > 0) {
     const [number, times] = queue.shift();
 
-    if (number === goal) {
-      return times;
+    const double = number * 2;
+    const lastOne = number * 10 + 1;
+
+    if (double === goal || lastOne === goal) {
+      return times + 1;
     }
 
-    if (number * 2 <= goal) {
-      queue.push([number * 2, times + 1]);
+    if (double < goal) {
+      queue.push([double, times + 1]);
     }
 
-    if (number * 10 + 1 <= goal) {
-      queue.push([number * 10 + 1, times + 1]);
+    if (lastOne < goal) {
+      queue.push([lastOne, times + 1]);
     }
   }
 
