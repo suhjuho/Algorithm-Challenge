@@ -7,11 +7,16 @@ const input = fs.readFileSync(filePath).toString().trim().split("\n");
 function solution(inputArguments) {
   const [start, goal] = inputArguments[0].split(" ").map(Number);
   const queue = [[start, 1]];
+  const visited = { start: true };
 
   if (start === goal) return 1;
 
   while (queue.length > 0) {
     const [number, times] = queue.shift();
+
+    if (visited[number]) {
+      continue;
+    }
 
     const double = number * 2;
     const lastOne = number * 10 + 1;
@@ -27,6 +32,8 @@ function solution(inputArguments) {
     if (lastOne < goal) {
       queue.push([lastOne, times + 1]);
     }
+
+    visited[number] = true;
   }
 
   return -1;
