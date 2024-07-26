@@ -6,29 +6,27 @@ const input = fs.readFileSync(filePath).toString().trim().split("\n");
 
 function solution(inputArguments) {
   const [N, K] = inputArguments[0].split(" ").map(Number);
-  const queue = [[N, 0]];
-  const visited = { N: true };
+  const timesOfNumber = Array(100001).fill(0);
+  let queue = [N];
 
   while (queue.length > 0) {
-    const [number, step] = queue.shift();
+    const number = queue.shift();
 
     if (number === K) {
-      return step;
+      return timesOfNumber[number];
     }
 
-    if (number - 1 >= 0 && !visited[number - 1]) {
-      visited[number - 1] = true;
-      queue.push([number - 1, step + 1]);
-    }
+    const nextNumbers = [number - 1, number + 1, number * 2];
 
-    if (number + 1 <= 100000 && !visited[number + 1]) {
-      visited[number + 1] = true;
-      queue.push([number + 1, step + 1]);
-    }
-
-    if (number * 2 <= 100000 && !visited[number * 2]) {
-      visited[number * 2] = true;
-      queue.push([number * 2, step + 1]);
+    for (const nextNumber of nextNumbers) {
+      if (
+        0 <= nextNumber &&
+        nextNumber < 100001 &&
+        !timesOfNumber[nextNumber]
+      ) {
+        timesOfNumber[nextNumber] = timesOfNumber[number] + 1;
+        queue.push(nextNumber);
+      }
     }
   }
 
